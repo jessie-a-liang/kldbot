@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Options</title>
+    <style>
+        .button-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .button-row button {
+            margin: 5px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select Options</h1>
+    <form action="/save" method="post">
+        <div class="header">
+            <h2>Skin</h2>
+        </div>
+        <div class="button-row">
+            <!-- Skin options buttons -->
+            <button type="button" onclick="addToSelection('Today my skin is ok.')">
+                <img src="/static/skin_ok.png" alt="Today my skin is ok.">
+            </button>
+            <button type="button" onclick="addToSelection('Today my skin is good.')">
+                <img src="/static/skin_good.png" alt="Today my skin is good.">
+            </button>
+            <button type="button" onclick="addToSelection('Today I have acne.')">
+                <img src="/static/acne.png" alt="Today I have acne.">
+            </button>
+            <button type="button" onclick="addToSelection('Today my skin is dry.')">
+                <img src="/static/skin_dry.png" alt="Today my skin is dry.">
+            </button>
+            <button type="button" onclick="addToSelection('Today my skin is oily.')">
+                <img src="/static/skin_oily.png" alt="Today my skin is oily.">
+            </button>
+            <button type="button" onclick="addToSelection('Today my skin is itchy.')">
+                <img src="/static/skin_itchy.png" alt="Today my skin is itchy.">
+            </button>
+        </div>
+        <div class="header">
+            <h2>Products Used</h2>
+        </div>
+        <div class="button-row">
+            <!-- Products options buttons -->
+            <button type="button" onclick="addToSelection('Today I used kld moisturizer.')">
+                <img src="/static/moisturizer.png" alt="Today I used kld moisturizer.">
+            </button>
+            <button type="button" onclick="addToSelection('Today I used kld gentle cleanser.')">
+                <img src="/static/cleanser.png" alt="Today I used kld gentle cleanser.">
+            </button>
+            <button type="button" onclick="addToSelection('Today I used kld exfoliants.')">
+                <img src="/static/exfoliants.png" alt="Today I used kld exfoliants.">
+            </button>
+            <button type="button" onclick="addToSelection('Today I used kld acne cream.')">
+                <img src="/static/acne_cream.png" alt="Today I used kld acne cream.">
+            </button>
+            <button type="button" onclick="addToSelection('Today I used kld lip gloss.')">
+                <img src="/static/lip_gloss.png" alt="Today I used kld lip gloss.">
+            </button>
+            <button type="button" onclick="addToSelection('Today I used kld lip stain.')">
+                <img src="/static/lip_stain.png" alt="Today I used kld lip stain.">
+            </button>
+            <button type="button" onclick="addToSelection('Today I used kld eye pencil.')">
+                <img src="/static/eye_pencil.png" alt="Today I used kld eye pencil.">
+            </button>
+            <button type="button" onclick="addToSelection('Today I used kld waterproof eyeliner.')">
+                <img src="/static/eyeliner.png" alt="Today I used kld waterproof eyeliner.">
+            </button>
+        </div>
+        <!-- Hidden input field to store selections -->
+        <input type="hidden" name="selection" id="selection" value="">
+        <button type="button" onclick="saveSelections()">Save Selections</button>
+    </form>
+
+    <script>
+        function addToSelection(selection) {
+            var currentValue = document.getElementById('selection').value;
+            if (currentValue === '') {
+                document.getElementById('selection').value = selection;
+            } else {
+                document.getElementById('selection').value += ';' + selection;
+            }
+            console.log("Selection added:", selection); // Print selection to console
+        }
+
+        function saveSelections() {
+            document.forms[0].submit();
+        }
+    </script>
+</body>
+</html>
